@@ -22,6 +22,27 @@ function division(a, b) {
   return a / b;
 }
 
+// modulo returns the remainder of a divided by b
+function modulo(a, b) {
+  if (b === 0) {
+    throw new Error("Modulo by zero is not allowed");
+  }
+  return a % b;
+}
+
+// power returns base raised to the exponent
+function power(base, exponent) {
+  return Math.pow(base, exponent);
+}
+
+// squareRoot returns the square root of n, with error handling for negative numbers
+function squareRoot(n) {
+  if (n < 0) {
+    throw new Error("Square root of a negative number is not allowed");
+  }
+  return Math.sqrt(n);
+}
+
 function main() {
   const [operation, a, b] = process.argv.slice(2);
   const x = parseFloat(a);
@@ -32,6 +53,9 @@ function main() {
     subtract: subtraction,
     multiply: multiplication,
     divide: division,
+    modulo: modulo,
+    power: power,
+    sqrt: squareRoot,
   };
 
   if (!operations[operation]) {
@@ -46,4 +70,12 @@ if (require.main === module) {
   main();
 }
 
-module.exports = { addition, subtraction, multiplication, division };
+module.exports = {
+  addition,
+  subtraction,
+  multiplication,
+  division,
+  modulo,
+  power,
+  squareRoot,
+};
